@@ -478,7 +478,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
 	char *inquiry_sdms =    (char *)"Generic-SD/MemoryStick  1.00 ";
 	char *inquiry_sd =      (char *)"Generic-SD/MMC          1.00 ";
 	char *inquiry_ms =      (char *)"Generic-MemoryStick     1.00 ";
-	char inquiry_string;
+	char *inquiry_string;
 	unsigned char sendbytes;
 	unsigned char *buf;
 	u8 card = get_lun_card(chip, lun);
@@ -536,7 +536,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
 
 	if (sendbytes > 8) {
 		memcpy(buf, inquiry_buf, 8);
-		memcpy(buf + 8, inquiry_string,	sendbytes - 8);
+		strncpy(buf + 8, inquiry_string,	sendbytes - 8);
 		if (pro_formatter_flag) {
 			/* Additional Length */
 			buf[4] = 0x33;
