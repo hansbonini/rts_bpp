@@ -478,7 +478,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
 	char *inquiry_sdms =    (char *)"Generic-SD/MemoryStick  1.00 ";
 	char *inquiry_sd =      (char *)"Generic-SD/MMC          1.00 ";
 	char *inquiry_ms =      (char *)"Generic-MemoryStick     1.00 ";
-	char *inquiry_string;
+	char inquiry_string;
 	unsigned char sendbytes;
 	unsigned char *buf;
 	u8 card = get_lun_card(chip, lun);
